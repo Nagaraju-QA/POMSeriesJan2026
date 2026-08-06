@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Trading App Test Regression Suite" verbose="4" thread-count="2"
+	parallel="tests">
+	
+	<listeners>
+		<listener class-name="com.aventstack.chaintest.plugins.ChainTestListener" />
+		<listener class-name="com.qa.Trading.listeners.TestAllureListener" />
+		<listener class-name="com.qa.Trading.listeners.AnnotationTransformer" />
+	</listeners>
+	
+<!--	<test name="Account Page Test_chrome">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.Trading.tests.AccountsPageTest" />
+		</classes>
+	</test>
+
+	<test name="Account Page Test_edge">
+			<parameter name="browser" value="edge" />
+		<classes>
+			<class name="com.qa.Trading.tests.AccountsPageTest" />
+		</classes>
+	</test> -->
+
+	<test name="Login Page Test_chrome">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.Trading.tests.LoginPageTest" />
+		</classes>
+	</test>
+
+<!--	<test name="Login Page Test_edge">
+		<parameter name="browser" value="edge" />
+		<classes>
+			<class name="com.qa.Trading.tests.LoginPageTest" />
+		</classes>
+	</test>
+	
+	<test name="Product Info Test">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.Trading.tests.ProductInfoPageTest" />
+		</classes>
+	</test>
+
+	<test name="Register Page Test">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.Trading.tests.RegisterPageTest" />
+		</classes>
+	</test>
+
+	<test name="Search Results Test">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.Trading.tests.SearchResultsPageTest" />
+		</classes>
+	</test>
+ -->
+</suite>
