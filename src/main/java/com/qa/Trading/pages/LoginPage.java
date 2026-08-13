@@ -66,4 +66,8 @@ public class LoginPage {
 		eleUtil.clickWithWait(forgotpwdLink, DEFAULT_TIME);
 		return new ForgottenPasswordPage(driver);
 	}
+	
+	public void f1() {
+		System.out.println("login page feature");
+	}
 }
