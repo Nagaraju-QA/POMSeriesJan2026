@@ -48,7 +48,7 @@ public class RegisterPageTest extends BaseTest{
 	@DataProvider
 	public Object[][] getCSVData() throws IOException{
 		List<Object[]> data = new ArrayList<Object[]>();
-		try(BufferedReader br= new BufferedReader(new FileReader("./src/test/resource/TestData/product.csv"))){
+		try(BufferedReader br= new BufferedReader(new FileReader("./src/test/resources/TestData/product.csv"))){
 			String line;
 			while((line=br.readLine())!=null) {
 				String[] values = line.split(",");
