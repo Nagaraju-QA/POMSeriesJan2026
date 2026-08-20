@@ -1,59 +1,116 @@
-pipeline {
+pipeline 
+{
     agent any
-
-    stages {
-        stage("Build") {
-            steps {
-                echo "build the project"
-            }
+    
+    tools{
+        maven 'maven'
         }
 
-        stage("Run Unit Test") {
-            steps {
-                echo "run UTs"
+    stages 
+    {
+        stage('Build') 
+        {
+            steps
+            {
+                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+            post 
+            {
+                success
+                {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
             }
         }
-
-        stage("Run Integration Test") {
-            steps {
-                echo "run ITs"
+        
+        
+        
+        stage("Deploy to QA"){
+            steps{
+                echo("deploy to qa done")
             }
         }
-
-        stage("Deploy to Dev") {
+        
+        
+        
+                
+        stage('Regression Automation Tests') {
             steps {
-                echo "deploy to dev"
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    git 'https://github.com/Nagaraju-QA/POMSeriesJan2026.git'
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/TestRunners/RegressionTestExecution_Chrome.xml -Denv=qa"
+                    
+                }
             }
         }
-
-         stage("Deploy to QA") {
-            steps {
-                echo "Deploy to QA"
+                
+     
+        stage('Publish Allure Reports') {
+           steps {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: '/allure-results']]
+                    ])
+                }
             }
         }
-
-        stage("Run regression test cases on QA") {
-            steps {
-                echo "Run test cases on QA"
+        
+        
+        stage('Publish ChainTest Report'){
+            steps{
+                     publishHTML([allowMissing: false,
+                                  alwaysLinkToLastBuild: false, 
+                                  keepAll: true, 
+                                  reportDir: 'target/chaintest', 
+                                  reportFiles: 'Index.html', 
+                                  reportName: 'HTML Regression ChainTest Report', 
+                                  reportTitles: ''])
             }
         }
-
-        stage("Deploy to Stage") {
-            steps {
-                echo "Deploy to Stage"
+        
+        stage("Deploy to UAT"){
+            steps{
+                echo("deploy to UAT")
             }
         }
-
-        stage("Run sanity test cases on Stage") {
+        
+        stage('Sanity Automation Test') {
             steps {
-                echo "Run sanity test cases on Stage"
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    git 'https://github.com/Nagaraju-QA/POMSeriesJan2026.git'
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/TestRunners/SanityTestExecution.xml -Denv=uat"
+                    
+                }
             }
         }
-
-        stage("Deploy to PROD") {
-            steps {
-                echo "Deploy to PROD"
+        
+        
+        
+        stage('Publish sanity ChainTest Report'){
+            steps{
+                     publishHTML([allowMissing: false,
+                                  alwaysLinkToLastBuild: false, 
+                                  keepAll: true, 
+                                  reportDir: 'target/chaintest', 
+                                  reportFiles: 'Index.html', 
+                                  reportName: 'HTML Sanity ChainTest Report', 
+                                  reportTitles: ''])
             }
         }
+        
+        
+        stage("Deploy to PROD"){
+            steps{
+                echo("deploy to PROD")
+            }
+        }
+        
+        
     }
 }
