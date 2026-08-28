@@ -67,7 +67,4 @@ public class LoginPage {
 		return new ForgottenPasswordPage(driver);
 	}
 	
-	public void f1() {
-		System.out.println("login page feature");
-	}
 }
