@@ -30,12 +30,13 @@
 		</classes>
 	</test>
 
-	<!-- 	<test name="Login Page Test_edge">
+		<test name="Login Page Test_edge">
 		<parameter name="browser" value="edge" />
 		<parameter name="browserversion" value="105.0" />
+		<parameter name="testname" value="Login Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.LoginPageTest" />
 		</classes>
-	</test>	-->
+	</test>	
 
 </suite>
