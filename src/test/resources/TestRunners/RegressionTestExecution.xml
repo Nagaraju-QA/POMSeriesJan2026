@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Trading App Test Regression Suite" verbose="4" thread-count="2"
+<suite name="Trading App Test Regression Suite" verbose="4" thread-count="4"
 	parallel="tests">
 
 	<listeners>
@@ -20,8 +20,10 @@
 		</classes>
 	</test>
 
-	<test name="Account Page Test_edge">
-		<parameter name="browser" value="edge" />
+	<test name="Account Page Test_firefox">
+		<parameter name="browser" value="firefox" />
+		<parameter name="browserversion" value="105.0" />
+		<parameter name="testname" value="Account Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.AccountsPageTest" />
 		</classes>
@@ -29,13 +31,17 @@
 
 	<test name="Login Page Test_chrome">
 		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="113.0" />
+		<parameter name="testname" value="Login Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.LoginPageTest" />
 		</classes>
 	</test>
 
-	<test name="Login Page Test_edge">
-		<parameter name="browser" value="edge" />
+	<test name="Login Page Test_firefox">
+		<parameter name="browser" value="firefox" />
+		<parameter name="browserversion" value="105.0" />
+		<parameter name="testname" value="Login Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.LoginPageTest" />
 		</classes>
@@ -43,13 +49,17 @@
 
 	<test name="Product Info Test_chrome">
 		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="113.0" />
+		<parameter name="testname" value="ProductInfo Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.ProductInfoPageTest" />
 		</classes>
 	</test>
 
-	<test name="Product Info Test_edge">
-		<parameter name="browser" value="edge" />
+	<test name="Product Info Test_firefox">
+		<parameter name="browser" value="firefox" />
+		<parameter name="browserversion" value="105.0" />
+		<parameter name="testname" value="ProductInfo Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.ProductInfoPageTest" />
 		</classes>
@@ -57,27 +67,35 @@
 
 	<test name="Register Page Test_chrome">
 		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="113.0" />
+		<parameter name="testname" value="Register Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.RegisterPageTest" />
 		</classes>
 	</test>
 
-	<test name="Register Page Test_edge">
-		<parameter name="browser" value="edge" />
+	<test name="Register Page Test_firefox">
+		<parameter name="browser" value="firefox" />
+		<parameter name="browserversion" value="105.0" />
+		<parameter name="testname" value="Register Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.RegisterPageTest" />
 		</classes>
 	</test>
-	
+
 	<test name="Search Results Test_chrome">
 		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="113.0" />
+		<parameter name="testname" value="Search Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.SearchResultsPageTest" />
 		</classes>
 	</test>
 
-	<test name="Search Results Test_edge">
-		<parameter name="browser" value="edge" />
+	<test name="Search Results Test_firefox">
+		<parameter name="browser" value="firefox" />
+		<parameter name="browserversion" value="105.0" />
+		<parameter name="testname" value="Login Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.SearchResultsPageTest" />
 		</classes>
