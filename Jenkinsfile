@@ -40,7 +40,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/Nagaraju-QA/POMSeriesJan2026.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/TestRunners/RegressionTestExecution_Chrome.xml -Denv=qa"
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/TestRunners/SanityTestExecution.xml -Denv=qa"
                     
                 }
             }
