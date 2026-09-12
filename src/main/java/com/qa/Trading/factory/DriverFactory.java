@@ -42,7 +42,6 @@ public class DriverFactory {
 		log.info("Properties :" + prop);
 		String browserName = prop.getProperty("browser");
 
-		// System.out.println("Browser name: "+browserName);
 		log.info("Browser name: " + browserName);
 
 		optManager = new OptionsManager(prop);
