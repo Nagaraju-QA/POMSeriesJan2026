@@ -14,6 +14,8 @@
 	<test name="Login Page Test_chrome">
 		<parameter name="browser" value="chrome" />
 		<parameter name="browserversion" value="123.0" />
+		<parameter name="testname" value="Login Page Test" />
+
 		<classes>
 			<class name="com.qa.Trading.tests.LoginPageTest" />
 		</classes>
@@ -22,11 +24,12 @@
 	<test name="Login Page Test_firefox">
 		<parameter name="browser" value="firefox" />
 		<parameter name="browserversion" value="105.0" />
+		<parameter name="testname" value="Login Page Test" />
 		<classes>
 			<class name="com.qa.Trading.tests.LoginPageTest" />
 		</classes>
 	</test>
-	
+
 	<!-- 	<test name="Login Page Test_edge">
 		<parameter name="browser" value="edge" />
 		<parameter name="browserversion" value="105.0" />

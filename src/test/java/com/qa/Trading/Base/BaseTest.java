@@ -35,15 +35,16 @@ public class BaseTest {
 	protected RegisterPage registerPage;
 	protected ForgottenPasswordPage forgottenPwdPage;
 	
-	@Parameters({"browser","browserversion"})
+	@Parameters({"browser","browserversion","testname"})
 	@BeforeTest
-	public void setUp(String browserName, String browserversion) {
+	public void setUp(String browserName, String browserversion, String testname) {
 		df = new DriverFactory();
 		prop = df.initProperty();
 		
 		if(browserName!=null) {
 			prop.setProperty("browser", browserName);
 			prop.setProperty("browserversion", browserversion);
+			prop.setProperty("testname", testname);
 		}
 		
 		driver = df.iniDriver(prop);
